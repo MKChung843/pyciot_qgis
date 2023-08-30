@@ -1,5 +1,5 @@
-# PyCITO-QGIS
-## A QGIS plugin to get PyCIOT data
+# PyCITO-QGIS (A QGIS plugin to get PyCIOT data)
+## Install
 在下載之前請先照下面方式確認是否安裝**pyCIOT**
 
 - 在python console 中輸入下列語法
