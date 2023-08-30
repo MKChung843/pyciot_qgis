@@ -52,6 +52,7 @@ class PyCIOTDialog(QtWidgets.QDialog, FORM_CLASS):
         self.iface = iface
 
         self.setCoordinates(startX, startY, endX, endY)
+        self.textEdit.setReadOnly(True)
 
         self.threadpool = QThreadPool()
 
@@ -88,19 +89,20 @@ class PyCIOTDialog(QtWidgets.QDialog, FORM_CLASS):
 
     @pyqtSlot()
     def on_button_box_accepted(self):
-        air = self.getAirSource()
-        water = self.getWaterSource()
-        weather = self.getWeatherSource()
-        video = self.getVideoSource()
-        earthquake = self.getQuakeSource()
-        self.totalProcess = len(air) + len(water) + len(weather) + len(video) + len(earthquake)
+        self.air = self.getAirSource()
+        self.water = self.getWaterSource()
+        self.weather = self.getWeatherSource()
+        self.video = self.getVideoSource()
+        self.earthquake = self.getQuakeSource()
+        self.totalProcess = len(self.air) + len(self.water) + len(self.weather) + len(self.video) + len(self.earthquake)
 
         # Initiating processing
-        pyciotRequest = PyCIOTRequest(air,water,weather,video,earthquake,self.SAVE_FOLDER.text(),self.iface)
+        pyciotRequest = PyCIOTRequest(self.air,self.water,self.weather,self.video,self.earthquake,self.SAVE_FOLDER.text(),self.iface)
         pyciotRequest.setParameters(self.wEdit.text(), self.sEdit.text(), self.eEdit.text(), self.nEdit.text())
         # Connecting end signal
         pyciotRequest.signals.processFinished.connect(self.processFinished)
         pyciotRequest.signals.processReported.connect(self.processReported)
+        pyciotRequest.signals.noDataReported.connect(self.noDataReported)
         pyciotRequest.signals.errorOccurred.connect(self.errorOccurred)
         pyciotRequest.signals.userCanceled.connect(self.userCanceled)
         # Setting the progress bar
@@ -135,6 +137,10 @@ class PyCIOTDialog(QtWidgets.QDialog, FORM_CLASS):
         self.progressBar.setValue(self.process)
 
     @pyqtSlot(str)
+    def noDataReported(self, message):
+        self.progressMessageBar.setText(message)
+
+    @pyqtSlot(str)
     def processFinished(self, message):
         self.progressBar.setRange(0, self.totalProcess)
         self.progressBar.setValue(self.totalProcess)
@@ -155,7 +161,16 @@ class PyCIOTDialog(QtWidgets.QDialog, FORM_CLASS):
         #        qml_file = os.path.join(self.plugin_dir, style)
         #        lyr.loadNamedStyle(qml_file)
         #    # >>
-            
+        for i in self.air:
+            filename = i.replace(":","_")
+            if not os.path.isfile(os.path.join(self.SAVE_FOLDER.text(),filename+".shp")): continue
+            self.iface.addVectorLayer(os.path.join(self.SAVE_FOLDER.text(),filename+".shp"), i, "ogr")
+
+        for i in self.water:
+            filename = i.replace(":","_")
+            if not os.path.isfile(os.path.join(self.SAVE_FOLDER.text(),filename+".shp")): continue
+            self.iface.addVectorLayer(os.path.join(self.SAVE_FOLDER.text(),filename+".shp"), i, "ogr")
+
         QMessageBox.warning(self, 'Info!', message)
         # << Updated by SIGMOÉ
         self.msgBar.clearWidgets()
