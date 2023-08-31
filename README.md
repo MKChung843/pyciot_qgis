@@ -1,6 +1,6 @@
 # PyCITO-QGIS (A QGIS plugin to get PyCIOT data)
 
-### 以下為本工具的使用說明。因為本工具需要使用中研院[陳伶志老師團隊](https://cclljj.github.io/)針對民生公共物聯網資料庫所開發的 [pyCIOT](https://pypi.org/project/pyCIOT/) 套件，所以請使用者先在 QGIS 的 python 環境中執行一些簡單的安裝語法
+### 以下為本工具的使用說明。因為本工具需要使用 [pyCIOT](https://pypi.org/project/pyCIOT/) 套件，所以使用者需在 QGIS 的 python 環境中執行一些簡單的安裝語法
 
 附註：若要測試套件功能，可先選擇數量較少的水利署測站，若是空氣品質類的因為數量較多，所以程式運行時間會較久。
 - - -
