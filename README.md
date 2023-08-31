@@ -2,7 +2,7 @@
 以下為本工具的使用說明。因為本工具需要使用中研院陳伶志老師團隊針對民生公共物聯網資料庫所開發的 pyCIOT 套件，所以請使用者先在 QGIS 的 pyrhon 環境中執行一些簡單的安裝語法
 
 - 在Windows 工具列中，打開 QGIS 的 OSGeo4W Shell 指令視窗
-![Image](./figure/pyCIOT_firgre01.jpg)
+![Image](./figure/pyCIOT_figure01.jpg)
 
 - 依序輸入 pip install --upgrade pip 與 pip install pyCIOT 以安裝 pyCIOT 套件
 ![Image](./figure/pyCIOT_figure02.png)
