@@ -3,7 +3,7 @@
 
 - 在Windows 工具列中，打開 QGIS 的 OSGeo4W Shell 指令視窗
 
-![Image](./figure/pyCIOT_figure01.jpg)
+![Image](./figure/pyCIOT_figure01.png)
 
 - 依序輸入 pip install --upgrade pip 與 pip install pyCIOT 以安裝 pyCIOT 套件
 
