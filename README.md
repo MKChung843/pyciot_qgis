@@ -47,7 +47,7 @@ import pyCIOT
 
 ![Image](./figure/pyCIOT_figure10.png)
 
-- 後續，並選擇需要的感測器來源，並選定成果資料儲存的位置，本工具就會開始下載
+- 後續，選擇需要的感測器來源，並選定成果資料儲存的位置，本工具就會開始下載並轉檔
 
 ![Image](./figure/pyCIOT_figure11.png)
 
