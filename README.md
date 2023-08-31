@@ -27,6 +27,7 @@ import pyCIOT
 
 - 到 QGIS 點選 plugins，並選擇 Install from ZIP 的選項，導入剛剛下載的 zip 檔案
 ![Image](./figure/pyCIOT_figure07.png)
+
 ![Image](./figure/pyCIOT_figure08.png)
 
 - 完成後，QGIS的工具列中，就會出現一個 CIOT (民生公共物聯網) 的 ICON
